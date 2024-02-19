@@ -1,0 +1,215 @@
+<!DOCTYPE HTML><html xmlns:jmeter="http://jmeter.apache.org/">
+   <title>Schematic view of Test Plan</title>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <style>
+ul.tree, ul.tree ul {
+    list-style-type: none;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAKAQMAAABPHKYJAAAAA1BMVEWIiIhYZW6zAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH1ggGExMZBky19AAAAAtJREFUCNdjYMAEAAAUAAHlhrBKAAAAAElFTkSuQmCC') repeat-y;
+    margin: 0;
+    padding: 0;
+}
+ul.tree ul {
+    margin-left: 10px;
+}
+ul.tree li {
+    margin: 0;
+    padding: 0 12px;
+    line-height: 20px;
+    background:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAUAQMAAACK1e4oAAAABlBMVEUAAwCIiIgd2JB2AAAAAXRSTlMAQObYZgAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YIBhQIJYVaFGwAAAARSURBVAjXY2hgQIf/GTDFGgDSkwqATqpCHAAAAABJRU5ErkJggg==') no-repeat;
+    color: #369;
+}
+ul.tree li:last-child {
+    background: #fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAUAQMAAACK1e4oAAAABlBMVEUAAwCIiIgd2JB2AAAAAXRSTlMAQObYZgAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YIBhQIIhs+gc8AAAAQSURBVAjXY2hgQIf/GbAAAKCTBYBUjWvCAAAAAElFTkSuQmCC') no-repeat;
+}
+</style>
+   </head>
+   <body>
+      <ul class="tree" id="tree">
+         <li><b>load test </b>
+            "Test Plan" 
+            (globalVars:[],
+            executeTearDownThreadsOnShutdown: false)
+            </li>
+         <li>
+            <ul>
+               <li><b>run</b>
+                  "Thread Group" 
+                  (
+                  threads: "5000",
+                  loops: "-1",
+                  ramp-up: "3"
+                  )
+                  </li>
+               <li>
+                  <ul>
+                     <li><b>globalVars</b>
+                        "User Defined Variables" 
+                        ([
+                        "baseUrl"
+                        =
+                        "localhost"
+                        ])
+                        </li>
+                     <li><b>http request</b>
+                        "GET  /characters" 
+                        (method: "GET",
+                        url: "
+                        http://${baseUrl}:3001//characters",
+                        
+                        body: [
+                        
+                        ]
+                        ,
+                        upload-files: [
+                        
+                        ]
+                        )
+                        </li>
+                     <li>
+                        <ul>
+                           <li><b>add headers</b>
+                              "HTTP Header Manager" 
+                              (headers:[
+                              
+                              {"content-type"=
+                              "application/json"
+                              ])
+                              </li>
+                           <li><b>DurationAssertion</b>
+                              "Duration Assertion" </li>
+                        </ul>
+                     </li>
+                     <li><b>http request</b>
+                        "GET  /character/id " 
+                        (method: "GET",
+                        url: "
+                        ://${baseUrl}:3001//character/3",
+                        
+                        body: [
+                        
+                        ]
+                        ,
+                        upload-files: [
+                        
+                        ]
+                        )
+                        </li>
+                     <li>
+                        <ul>
+                           <li><b>add headers</b>
+                              "HTTP Header Manager" 
+                              (headers:[
+                              
+                              {"content-type"=
+                              "application/json"
+                              ])
+                              </li>
+                           <li><b>DurationAssertion</b>
+                              "Duration Assertion" </li>
+                        </ul>
+                     </li>
+                     <li><b>http request</b>
+                        "POST /character" 
+                        (method: "POST",
+                        url: "
+                        ://${baseUrl}:3001//character",
+                        
+                        body: "{&#xD;
+                        "name":"${__RandomString(6,qwertyuiopasdfghjklzxcvbnm,)}",&#xD;
+                        "age":"${__Random(1,100,)}"&#xD;
+                        }&#xD;
+                        "
+                        ,
+                        upload-files: [
+                        
+                        ]
+                        )
+                        </li>
+                     <li>
+                        <ul>
+                           <li><b>add headers</b>
+                              "HTTP Header Manager" 
+                              (headers:[
+                              
+                              {"content-type"=
+                              "application/json"
+                              ])
+                              </li>
+                           <li><b>DurationAssertion</b>
+                              "Duration Assertion" </li>
+                        </ul>
+                     </li>
+                     <li><b>http request</b>
+                        "PUT /character/id " 
+                        (method: "PUT",
+                        url: "
+                        ://${baseUrl}:3001//character/1",
+                        
+                        body: "{&#xD;
+                        "name":"${__RandomString(6,qwertyuiopasdfghjklzxcvbnm,)}",&#xD;
+                        "age":"${__Random(1,100,)}"&#xD;
+                        }&#xD;
+                        "
+                        ,
+                        upload-files: [
+                        
+                        ]
+                        )
+                        </li>
+                     <li>
+                        <ul>
+                           <li><b>add headers</b>
+                              "HTTP Header Manager" 
+                              (headers:[
+                              
+                              {"content-type"=
+                              "application/json"
+                              ])
+                              </li>
+                           <li><b>DurationAssertion</b>
+                              "Duration Assertion" </li>
+                        </ul>
+                     </li>
+                     <li><b>http request</b>
+                        "DELETE /character/id" 
+                        (method: "DELETE",
+                        url: "
+                        ://${baseUrl}:3001//character/1",
+                        
+                        body: [
+                        
+                        ]
+                        ,
+                        upload-files: [
+                        
+                        ]
+                        )
+                        </li>
+                     <li>
+                        <ul>
+                           <li><b>add headers</b>
+                              "HTTP Header Manager" 
+                              (headers:[
+                              
+                              {"content-type"=
+                              "application/json"
+                              ])
+                              </li>
+                           <li><b>DurationAssertion</b>
+                              "Duration Assertion" </li>
+                        </ul>
+                     </li>
+                     <li><b>write samples</b>
+                        "View Results Tree" </li>
+                     <li><b>write samples</b>
+                        "Aggregate Report" </li>
+                     <li><b>write samples</b>
+                        "Graph Results" </li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+      </ul>
+   </body>
+</html>
